@@ -95,6 +95,8 @@ func (c *cachedURLMap) refresh() error {
 }
 
 func (s *server) handler(w http.ResponseWriter, req *http.Request) {
+	log.Printf("received URL %q", req.URL)
+
 	if req.URL.Path == "/" {
 		s.home(w, req)
 		return

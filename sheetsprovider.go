@@ -14,6 +14,8 @@ type sheetsProvider struct {
 }
 
 func (s *sheetsProvider) Query() ([][]interface{}, error) {
+	log.Println("initializing query")
+
 	if s.googleSheetsID == "" {
 		return nil, fmt.Errorf("GOOGLE_SHEET_ID not set")
 	}
