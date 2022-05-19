@@ -119,6 +119,7 @@ func (s *server) home(w http.ResponseWriter, req *http.Request) {
 }
 
 func (s *server) redirect(w http.ResponseWriter, req *http.Request) {
+	log.Println("redirect")
 
 	if req.Body != nil {
 		defer req.Body.Close()
@@ -140,6 +141,7 @@ func (s *server) redirect(w http.ResponseWriter, req *http.Request) {
 }
 
 func (s *server) findRedirect(req *url.URL) (*url.URL, error) {
+	log.Println("findRedirect")
 	path := strings.TrimPrefix(req.Path, "/")
 
 	segments := strings.Split(path, "/")
@@ -160,6 +162,7 @@ func (s *server) findRedirect(req *url.URL) (*url.URL, error) {
 }
 
 func prepRedirect(base *url.URL, addPath string, query url.Values) *url.URL {
+	log.Println("prepRedirect")
 	if addPath != "" {
 		if !strings.HasSuffix(base.Path, "/") {
 			base.Path += "/"
@@ -176,6 +179,7 @@ func prepRedirect(base *url.URL, addPath string, query url.Values) *url.URL {
 }
 
 func urlMap(in [][]interface{}) URLMap {
+	log.Println("urlMap")
 	out := make(URLMap)
 	for _, row := range in {
 		if len(row) < 2 {
